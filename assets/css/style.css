@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background overlay */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #ff5722;
+}
+
+.wishMessage h2 {
+    font-size: 28px;
+    color: #ff5722;
+}
+
+.personalMessage {
+    font-size: 20px;
+    font-style: italic;
+    margin-top: 10px;
+    color: #555;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Style for the page container to fit background properly */
+body {
+    background-color: #f0f0f0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1; /* Make sure the background has a lower z-index */
+}
