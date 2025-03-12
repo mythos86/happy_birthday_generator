@@ -54,3 +54,9 @@ body {
     margin: 0;                       /* Removes default margin */
     z-index: 1; /* Make sure the background has a lower z-index */
 }
+
+h1 {
+    font-size: 36px;
+    color: #000080;
+    margin-bottom: 20px;
+}
