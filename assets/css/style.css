@@ -49,5 +49,8 @@ body {
     background-color: #f0f0f0;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;    /* Keeps the background fixed while scrolling */
+    height: 100vh;                   /* Makes the body take the full height of the viewport */
+    margin: 0;                       /* Removes default margin */
     z-index: 1; /* Make sure the background has a lower z-index */
 }
