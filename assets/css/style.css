@@ -1,89 +1,88 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 20px;
-    margin: 0;
-    background-color: #f0f0f0;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
-    z-index: 1;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Wishes</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/confetti.css">
+</head>
+<body>
+<div class="confetti-container"></div>
+<div class="container" id="messageContainer">
+    <h1>Happy Birthday!</h1>
+    <div id="wishMessage"></div>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const celebrant = params.get('celebrant')?.trim();
+const wisher = params.get('wisher')?.trim();
+const personalWish = params.get('personalWish')?.trim();
+const position = params.get('position') || 'bottom';
+
+const wishMessageDiv = document.getElementById('wishMessage');
+const containerDiv = document.getElementById('messageContainer');
+
+// **Stap 1: Voeg position-klasse direct toe**
+containerDiv.classList.add(position);
+
+if (celebrant && wisher) {
+    const celebrantLower = celebrant.toLowerCase();
+    const wisherLower = wisher.toLowerCase();
+
+    let message = '';
+    let backgroundImage = 'assets/images/default.jpg';
+
+    if (celebrantLower === 'liam' && wisherLower === 'peetje') {
+        message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
+        backgroundImage = 'assets/images/spiderman.jpg';
+    } else {
+        message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
+        backgroundImage = getBackgroundImage(celebrantLower);
+    }
+
+    const wishMessage = document.createElement('div');
+    wishMessage.classList.add('wishMessage');
+    wishMessage.innerHTML = `<h2>${message}</h2>`;
+
+    if (personalWish) {
+        const personalMessage = document.createElement('p');
+        personalMessage.classList.add('personalMessage');
+        personalMessage.innerText = `"${decodeURIComponent(personalWish)}"`;
+        wishMessage.appendChild(personalMessage);
+    }
+
+    wishMessageDiv.appendChild(wishMessage);
+
+    document.body.style.backgroundImage = `url('${backgroundImage}')`;
+    document.body.style.backgroundSize = 'cover';
+} else {
+    alert('Missing celebrant or wisher name!');
 }
 
-.container {
-    width: 100%;
-    max-width: 600px;
-    padding: 20px;
-    background-color: rgba(255,255,255,0.8);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    margin: 50px auto;  /* standaard center */
-    position: relative;
+function getBackgroundImage(celebrantLower) {
+    switch (celebrantLower) {
+        case 'john': return 'assets/images/john.jpg';
+        case 'sarah': return 'assets/images/sarah.jpg';
+        case 'sylvia': return 'assets/images/sylvia.jpg';
+        default: return 'assets/images/default.jpg';
+    }
 }
 
-/* Special case for Liam */
-.container.liam-background {
-    /* extra styling als nodig */
+function generateConfetti() {
+    const container = document.querySelector('.confetti-container');
+    const numConfetti = 100;
+    for (let i = 0; i < numConfetti; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = `${Math.random() * 100}%`;
+        confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
+        container.appendChild(confetti);
+    }
 }
 
-/* Position classes for container */
-.container.top {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-}
-
-.container.bottom {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-}
-
-.container.left {
-    position: fixed;
-    top: 50%;
-    left: 20px;
-    transform: translateY(-50%);
-    margin: 0;
-}
-
-.container.right {
-    position: fixed;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    margin: 0;
-}
-
-/* Messages styling */
-h1 {
-    font-size: 36px;
-    color: #000080;
-    margin-bottom: 20px;
-}
-
-.wishMessage h2 {
-    font-size: 28px;
-    color: #ff5722;
-}
-
-.personalMessage {
-    font-size: 20px;
-    font-style: italic;
-    color: #555;
-    margin: 10px 0;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-button:hover { background-color: #45a049; }
+window.onload = generateConfetti;
+</script>
+</body>
+</html>
