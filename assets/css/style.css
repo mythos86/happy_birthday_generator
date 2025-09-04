@@ -3,6 +3,12 @@ body {
     text-align: center;
     padding: 20px;
     margin: 0;
+    background-color: #f0f0f0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    z-index: 1;
 }
 
 .container {
@@ -10,28 +16,25 @@ body {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8); /* Light background overlay */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     border-radius: 8px;
 }
 
-/* Alleen voor Liam EN HIER geplaatst na body en container*/
+/* Liam special case */
 body.liam-background .container {
-    position: fixed;       /* Fixeert de container aan het scherm */
-    bottom: 20px;          /* 20px van de onderkant van het scherm */
-    left: 50%;             /* Zet horizontaal in het midden */
-    transform: translateX(-50%); /* Center horizontaal precies */
-    max-width: 600px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     margin: 0;
 }
 
+/* Messages styling */
 h1 {
     font-size: 36px;
-    color: #ff5722;
+    color: #000080;
+    margin-bottom: 20px;
 }
 
 .wishMessage h2 {
@@ -42,9 +45,15 @@ h1 {
 .personalMessage {
     font-size: 20px;
     font-style: italic;
-    margin-top: 10px;
     color: #555;
+    margin: 10px 0;
 }
+
+/* Position classes for personal message */
+.personalMessage.top { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); }
+.personalMessage.bottom { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); }
+.personalMessage.left { position: absolute; top: 50%; left: 20px; transform: translateY(-50%); }
+.personalMessage.right { position: absolute; top: 50%; right: 20px; transform: translateY(-50%); }
 
 button {
     padding: 10px 20px;
@@ -53,24 +62,4 @@ button {
     border: none;
     cursor: pointer;
 }
-
-button:hover {
-    background-color: #45a049;
-}
-
-/* Style for the page container to fit background properly */
-body {
-    background-color: #f0f0f0;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;    /* Keeps the background fixed while scrolling */
-    height: 100vh;                   /* Makes the body take the full height of the viewport */
-    margin: 0;                       /* Removes default margin */
-    z-index: 1; /* Make sure the background has a lower z-index */
-}
-
-h1 {
-    font-size: 36px;
-    color: #000080;
-    margin-bottom: 20px;
-}
+button:hover { background-color: #45a049; }
