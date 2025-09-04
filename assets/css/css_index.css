@@ -1,0 +1,90 @@
+/* Basis styling voor body */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #4facfe, #1100fe); /* blue gradient */
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container voor de indexpagina */
+.index-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+/* Titels */
+.index-container h1 {
+    color: #060997;
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+/* Formulierelementen */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff5722;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1919e6;
+}
+
+/* Responsiviteit */
+@media (max-width: 480px) {
+    .index-container {
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 10px;
+    }
+}

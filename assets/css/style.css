@@ -1,36 +1,36 @@
-/* Basisinstellingen voor body en achtergrond */
+/* Body & achtergrond */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     padding: 0;
     margin: 0;
-    min-height: 100vh;           /* altijd minstens 100% van schermhoogte */
+    min-height: 100vh;
     background-color: #f0f0f0;
-    background-size: cover;       /* stretch achtergrond over volledige viewport */
-    background-position: center;  /* centraal plaatsen */
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* blijft fixed tijdens scrollen */
+    background-attachment: fixed;
 }
 
 /* Container styling */
 .container {
-    width: 90%;              /* neemt 90% van schermbreedte op mobiel */
-    max-width: 600px;        /* maximaal 600px op grote schermen */
+    width: 90%;
+    max-width: 600px;
     padding: 20px;
     background-color: rgba(255,255,255,0.8);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     border-radius: 8px;
-    position: relative;      /* standaard position */
-    margin: 50px auto;       /* standaard margin voor statisch gebruik */
+    position: relative;
+    margin: 50px auto;
 }
 
-/* Position classes voor container */
+/* Position classes container */
 .container.top {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    margin: 0;               /* verwijder standaard margin bij fixed */
+    margin: 0;
 }
 
 .container.bottom {
@@ -76,7 +76,7 @@ h1 {
     margin: 10px 0;
 }
 
-/* Button styling */
+/* Button */
 button {
     padding: 10px 20px;
     background-color: #4CAF50;
@@ -89,16 +89,14 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Media queries voor extra responsiviteit */
+/* Responsiviteit */
 @media (max-width: 768px) {
     .container {
-        width: 95%;  /* nog smaller op tablet/mobiel */
+        width: 95%;
     }
-
     h1 {
         font-size: 28px;
     }
-
     .wishMessage h2 {
         font-size: 22px;
     }

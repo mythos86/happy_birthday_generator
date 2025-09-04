@@ -6,31 +6,38 @@
     <title>Birthday Wishes Generator</title>
     <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="assets/css/css_index.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Birthday Wishes Generator</h1>
+    <div class="index-container">
+        <h1>🎉 Birthday Wishes Generator 🎂</h1>
 
-        <label for="celebrant">Wie is de Jarige?:</label>
-        <input type="text" id="celebrant" placeholder="Celebrant's name">
+        <div class="form-group">
+            <label for="celebrant">Wie is de Jarige?</label>
+            <input type="text" id="celebrant" placeholder="Naam van jarige">
+        </div>
 
-        <label for="wisher">Wat is jouw naam?:</label>
-        <input type="text" id="wisher" placeholder="Your name">
+        <div class="form-group">
+            <label for="wisher">Wat is jouw naam?</label>
+            <input type="text" id="wisher" placeholder="Jouw naam">
+        </div>
 
-        <label for="personalWish">Write a personal birthday message:</label>
-        <textarea id="personalWish" placeholder="Write your personal message here..."></textarea>
+        <div class="form-group">
+            <label for="personalWish">Persoonlijke boodschap</label>
+            <textarea id="personalWish" placeholder="Schrijf hier je boodschap..."></textarea>
+        </div>
 
-        <label for="position">Choose message container position:</label>
-        <select id="position">
-            <option value="bottom">Bottom</option>
-            <option value="top">Top</option>
-            <option value="left">Left</option>
-            <option value="right">Right</option>
-        </select>
+        <div class="form-group">
+            <label for="position">Kies positie van de container</label>
+            <select id="position">
+                <option value="bottom">Onder</option>
+                <option value="top">Boven</option>
+                <option value="left">Links</option>
+                <option value="right">Rechts</option>
+            </select>
+        </div>
 
-        <button id="generate">Generate Wishes</button>
+        <button id="generate">Genereer Boodschap</button>
     </div>
 
     <script src="assets/js/script.js"></script>
