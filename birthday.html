@@ -33,6 +33,16 @@
             const message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
             wishMessage.innerHTML = `<h2>${message}</h2>`;
 
+            // Genereer boodschap: Nederlands voor Liam, Engels voor anderen
+            let message = '';
+            if (celebrant.toLowerCase() === 'liam') {
+                message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
+                document.body.classList.add('liam-background'); // class voor onderaan container
+            } else {
+                message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
+            }
+            wishMessage.innerHTML = `<h2>${message}</h2>`;
+
             // Add the personal message if it exists
             if (personalWish) {
                 const personalMessage = document.createElement('p');
@@ -61,7 +71,6 @@
             } else if (celebrant.toLowerCase() === 'sylvia') {
                 return 'assets/images/sylvia.jpg';  // Add this image in the "images" folder
             } else if (celebrant.toLowerCase() === 'liam') {
-                document.body.classList.add('liam-background');
                 return 'assets/images/spiderman.jpg';  // Spider-Man background for Liam
             } else {
                 return 'assets/images/default.jpg'; // Default image
