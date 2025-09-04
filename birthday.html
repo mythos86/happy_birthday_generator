@@ -24,6 +24,9 @@
         const wishMessageDiv = document.getElementById('wishMessage');
         const containerDiv = document.getElementById('messageContainer');
 
+        // Voeg meteen de position-klasse toe aan de container
+        containerDiv.classList.add(position);
+
         if (celebrant && wisher) {
             const celebrantLower = celebrant.toLowerCase();
             const wisherLower = wisher.toLowerCase();
@@ -59,9 +62,6 @@
             // Achtergrond instellen
             document.body.style.backgroundImage = `url('${backgroundImage}')`;
             document.body.style.backgroundSize = 'cover';
-
-            // Container positie
-            containerDiv.classList.add(position);
 
         } else {
             alert('Missing celebrant or wisher name!');
