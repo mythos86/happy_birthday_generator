@@ -26,20 +26,20 @@
             const wishMessage = document.createElement('div');
             wishMessage.classList.add('wishMessage');
 
-            // Check both names in lowercase
             const celebrantLower = celebrant.toLowerCase();
             const wisherLower = wisher.toLowerCase();
 
             let message = '';
+            let backgroundImage = 'assets/images/default.jpg';
+
+            // Alleen Nederlands + Spider-Man als Peetje en Liam
             if (celebrantLower === 'liam' && wisherLower === 'peetje') {
                 message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
-                document.body.classList.add('liam-background'); // Plaats container onderaan
-            } else if (celebrantLower === 'liam') {
-                // Liam, maar andere wisher: Engels
-                message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
-                document.body.classList.add('liam-background'); // Nog steeds onderaan
+                backgroundImage = 'assets/images/spiderman.jpg';
+                document.body.classList.add('liam-background'); // container onderaan
             } else {
                 message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
+                backgroundImage = getBackgroundImage(celebrantLower);
             }
 
             wishMessage.innerHTML = `<h2>${message}</h2>`;
@@ -53,7 +53,6 @@
 
             wishMessageDiv.appendChild(wishMessage);
 
-            const backgroundImage = getBackgroundImage(celebrantLower);
             document.body.style.backgroundImage = `url('${backgroundImage}')`;
             document.body.style.backgroundSize = 'cover';
         } else {
@@ -65,7 +64,6 @@
                 case 'john': return 'assets/images/john.jpg';
                 case 'sarah': return 'assets/images/sarah.jpg';
                 case 'sylvia': return 'assets/images/sylvia.jpg';
-                case 'liam': return 'assets/images/spiderman.jpg';
                 default: return 'assets/images/default.jpg';
             }
         }
