@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/confetti.css">
 </head>
+
 <body>
     <div class="confetti-container"></div>
 
@@ -17,7 +19,7 @@
     </div>
 
     <script>
-        window.onload = function() {
+        window.onload = function () {
             const params = new URLSearchParams(window.location.search);
             const celebrant = params.get('celebrant')?.trim();
             const wisher = params.get('wisher')?.trim();
@@ -27,7 +29,10 @@
             const containerDiv = document.getElementById('messageContainer');
             const wishMessageDiv = document.getElementById('wishMessage');
 
-            // Voeg de positieklasse toe
+            // Verwijder eerst alle mogelijke positieklassen
+            containerDiv.classList.remove('top', 'bottom', 'left', 'right');
+
+            // Voeg daarna de gekozen klasse toe
             containerDiv.classList.add(position);
 
             if (celebrant && wisher) {
@@ -91,4 +96,5 @@
         }
     </script>
 </body>
+
 </html>
