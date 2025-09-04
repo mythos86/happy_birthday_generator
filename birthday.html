@@ -5,41 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Wishes</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/confetti.css"> <!-- Import confetti.css -->
+    <link rel="stylesheet" href="assets/css/confetti.css">
 </head>
 <body>
-    <!-- Confetti container -->
-    <div class="confetti-container"></div> <!-- No need for wishMessage in the confetti container -->
+    <div class="confetti-container"></div>
     <div class="container">
         <h1>Happy Birthday!</h1>
         <div id="wishMessage"></div>
     </div>
 
     <script>
-        // Get URL parameters
         const params = new URLSearchParams(window.location.search);
         const celebrant = params.get('celebrant');
         const wisher = params.get('wisher');
         const personalWish = params.get('personalWish');
 
-        // Display the birthday wish
         const wishMessageDiv = document.getElementById('wishMessage');
 
         if (celebrant && wisher) {
             const wishMessage = document.createElement('div');
             wishMessage.classList.add('wishMessage');
 
-            // Genereer boodschap: Nederlands voor Liam, Engels voor anderen
+            // Check both names in lowercase
+            const celebrantLower = celebrant.toLowerCase();
+            const wisherLower = wisher.toLowerCase();
+
             let message = '';
-            if (celebrant.toLowerCase() === 'liam') {
+            if (celebrantLower === 'liam' && wisherLower === 'peetje') {
                 message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
-                document.body.classList.add('liam-background'); // class voor onderaan container
+                document.body.classList.add('liam-background'); // Plaats container onderaan
+            } else if (celebrantLower === 'liam') {
+                // Liam, maar andere wisher: Engels
+                message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
+                document.body.classList.add('liam-background'); // Nog steeds onderaan
             } else {
                 message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
             }
+
             wishMessage.innerHTML = `<h2>${message}</h2>`;
 
-            // Add the personal message if it exists
             if (personalWish) {
                 const personalMessage = document.createElement('p');
                 personalMessage.classList.add('personalMessage');
@@ -47,48 +51,37 @@
                 wishMessage.appendChild(personalMessage);
             }
 
-            // Append to the container
             wishMessageDiv.appendChild(wishMessage);
 
-            // Set a celebratory background based on the celebrant's name
-            const backgroundImage = getBackgroundImage(celebrant);
+            const backgroundImage = getBackgroundImage(celebrantLower);
             document.body.style.backgroundImage = `url('${backgroundImage}')`;
             document.body.style.backgroundSize = 'cover';
         } else {
             alert('Missing celebrant or wisher name!');
         }
 
-        // Function to return a background based on the celebrant's name
-        function getBackgroundImage(celebrant) {
-            if (celebrant.toLowerCase() === 'john') {
-                return 'assets/images/john.jpg';  // Add this image in the "images" folder
-            } else if (celebrant.toLowerCase() === 'sarah') {
-                return 'assets/images/sarah.jpg';  // Add this image in the "images" folder
-            } else if (celebrant.toLowerCase() === 'sylvia') {
-                return 'assets/images/sylvia.jpg';  // Add this image in the "images" folder
-            } else if (celebrant.toLowerCase() === 'liam') {
-                return 'assets/images/spiderman.jpg';  // Spider-Man background for Liam
-            } else {
-                return 'assets/images/default.jpg'; // Default image
+        function getBackgroundImage(celebrantLower) {
+            switch (celebrantLower) {
+                case 'john': return 'assets/images/john.jpg';
+                case 'sarah': return 'assets/images/sarah.jpg';
+                case 'sylvia': return 'assets/images/sylvia.jpg';
+                case 'liam': return 'assets/images/spiderman.jpg';
+                default: return 'assets/images/default.jpg';
             }
         }
 
-        // Function to generate confetti particles
         function generateConfetti() {
             const container = document.querySelector('.confetti-container');
-            const numConfetti = 100; // Adjust number of confetti particles
-
+            const numConfetti = 100;
             for (let i = 0; i < numConfetti; i++) {
                 const confetti = document.createElement('div');
                 confetti.classList.add('confetti');
-                confetti.style.left = `${Math.random() * 100}%`; // Positioning confetti randomly across the width
-                confetti.style.animationDuration = `${Math.random() * 2 + 2}s`; // Random speed for each confetti
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
                 container.appendChild(confetti);
             }
-            console.log("Confetti generating...");
         }
 
-        // Trigger confetti effect on page load
         window.onload = generateConfetti;
     </script>
 </body>
