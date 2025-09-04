@@ -29,10 +29,6 @@
             const wishMessage = document.createElement('div');
             wishMessage.classList.add('wishMessage');
 
-            // Generate the message
-            const message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
-            wishMessage.innerHTML = `<h2>${message}</h2>`;
-
             // Genereer boodschap: Nederlands voor Liam, Engels voor anderen
             let message = '';
             if (celebrant.toLowerCase() === 'liam') {
