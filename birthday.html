@@ -33,7 +33,7 @@
             let message = '';
             let backgroundImage = 'assets/images/default.jpg';
 
-            // Liam + Peetje case
+            // Liam + Peetje special case
             if (celebrantLower === 'liam' && wisherLower === 'peetje') {
                 message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
                 backgroundImage = 'assets/images/spiderman.jpg';
@@ -49,7 +49,7 @@
             // Personal message
             if (personalWish) {
                 const personalMessage = document.createElement('p');
-                personalMessage.classList.add('personalMessage', personalPosition);
+                personalMessage.classList.add('personalMessage', personalPosition); // position class
                 personalMessage.innerText = `"${decodeURIComponent(personalWish)}"`;
                 wishMessage.appendChild(personalMessage);
             }
