@@ -19,7 +19,7 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     border-radius: 8px;
     margin: 50px auto;  /* standaard center */
-    position: relative; /* standaard flow */
+    position: relative;
 }
 
 /* Special case for Liam */
@@ -28,36 +28,36 @@ body {
 }
 
 /* Position classes for container */
-.container.top,
-.container.bottom,
-.container.left,
-.container.right {
-    position: fixed; /* fixed position for these */
-    margin: 0;       /* remove default margin */
-}
-
 .container.top {
+    position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
+    margin: 0;
 }
 
 .container.bottom {
+    position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+    margin: 0;
 }
 
 .container.left {
+    position: fixed;
     top: 50%;
     left: 20px;
     transform: translateY(-50%);
+    margin: 0;
 }
 
 .container.right {
+    position: fixed;
     top: 50%;
     right: 20px;
     transform: translateY(-50%);
+    margin: 0;
 }
 
 /* Messages styling */
@@ -75,4 +75,15 @@ h1 {
 .personalMessage {
     font-size: 20px;
     font-style: italic;
-    col
+    color: #555;
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover { background-color: #45a049; }
