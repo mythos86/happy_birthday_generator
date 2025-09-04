@@ -5,7 +5,17 @@ body {
     margin: 0;
 }
 
-/* Alleen voor Liam */
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background overlay */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+/* Alleen voor Liam EN HIER geplaatst na body en container*/
 body.liam-background .container {
     position: fixed;       /* Fixeert de container aan het scherm */
     bottom: 20px;          /* 20px van de onderkant van het scherm */
@@ -16,16 +26,7 @@ body.liam-background .container {
     background-color: rgba(255, 255, 255, 0.8);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-}
-
-.container {
-    width: 100%;
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8); /* Light background overlay */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+    margin: 0;
 }
 
 h1 {
