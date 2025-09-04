@@ -71,7 +71,8 @@ h1 {
 
 .personalMessage {
     font-size: 20px;
-    font-style: italic;
+    font-style: italic;  /* italic text */
+    font-weight: bold;   /* bold text */
     color: #555;
     margin: 10px 0;
 }
