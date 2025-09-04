@@ -19,6 +19,7 @@
         const celebrant = params.get('celebrant')?.trim();
         const wisher = params.get('wisher')?.trim();
         const personalWish = params.get('personalWish')?.trim();
+        const personalPosition = params.get('position')?.trim() || 'bottom';
 
         const wishMessageDiv = document.getElementById('wishMessage');
 
@@ -32,27 +33,30 @@
             let message = '';
             let backgroundImage = 'assets/images/default.jpg';
 
-            // Alleen Nederlands + Spider-Man als wisher === Peetje en celebrant === Liam
+            // Liam + Peetje case
             if (celebrantLower === 'liam' && wisherLower === 'peetje') {
                 message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
                 backgroundImage = 'assets/images/spiderman.jpg';
-                document.body.classList.add('liam-background'); // container onderaan
+                document.body.classList.add('liam-background');
             } else {
                 message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
                 backgroundImage = getBackgroundImage(celebrantLower);
             }
 
+            // Hoofdbericht
             wishMessage.innerHTML = `<h2>${message}</h2>`;
 
+            // Personal message
             if (personalWish) {
                 const personalMessage = document.createElement('p');
-                personalMessage.classList.add('personalMessage');
+                personalMessage.classList.add('personalMessage', personalPosition);
                 personalMessage.innerText = `"${decodeURIComponent(personalWish)}"`;
                 wishMessage.appendChild(personalMessage);
             }
 
             wishMessageDiv.appendChild(wishMessage);
 
+            // Achtergrond instellen
             document.body.style.backgroundImage = `url('${backgroundImage}')`;
             document.body.style.backgroundSize = 'cover';
         } else {
