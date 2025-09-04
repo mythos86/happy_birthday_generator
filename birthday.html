@@ -1,94 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Wishes</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/confetti.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Wishes</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/confetti.css">
 </head>
 <body>
-    <div class="confetti-container"></div>
-    <div class="container" id="messageContainer">
-        <h1>Happy Birthday!</h1>
-        <div id="wishMessage"></div>
-    </div>
+<div class="confetti-container"></div>
+<div class="container" id="messageContainer">
+    <h1>Happy Birthday!</h1>
+    <div id="wishMessage"></div>
+</div>
 
-    <script>
-        const params = new URLSearchParams(window.location.search);
-        const celebrant = params.get('celebrant')?.trim();
-        const wisher = params.get('wisher')?.trim();
-        const personalWish = params.get('personalWish')?.trim();
-        const position = params.get('position') || 'bottom';
+<script>
+const params = new URLSearchParams(window.location.search);
+const celebrant = params.get('celebrant')?.trim();
+const wisher = params.get('wisher')?.trim();
+const personalWish = params.get('personalWish')?.trim();
+const position = params.get('position') || 'bottom';
 
-        const wishMessageDiv = document.getElementById('wishMessage');
-        const containerDiv = document.getElementById('messageContainer');
+const wishMessageDiv = document.getElementById('wishMessage');
+const containerDiv = document.getElementById('messageContainer');
 
-        // Voeg meteen de position-klasse toe aan de container
-        containerDiv.classList.add(position);
+// Voeg position-klasse direct toe aan de container
+containerDiv.classList.add(position);
 
-        if (celebrant && wisher) {
-            const celebrantLower = celebrant.toLowerCase();
-            const wisherLower = wisher.toLowerCase();
+if (celebrant && wisher) {
+    const celebrantLower = celebrant.toLowerCase();
+    const wisherLower = wisher.toLowerCase();
 
-            let message = '';
-            let backgroundImage = 'assets/images/default.jpg';
+    let message = '';
+    let backgroundImage = 'assets/images/default.jpg';
 
-            // Liam + Peetje special case
-            if (celebrantLower === 'liam' && wisherLower === 'peetje') {
-                message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
-                backgroundImage = 'assets/images/spiderman.jpg';
-                containerDiv.classList.add('liam-background');
-            } else {
-                message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
-                backgroundImage = getBackgroundImage(celebrantLower);
-            }
+    // Special case Liam + Peetje
+    if (celebrantLower === 'liam' && wisherLower === 'peetje') {
+        message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
+        backgroundImage = 'assets/images/spiderman.jpg';
+    } else {
+        message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
+        backgroundImage = getBackgroundImage(celebrantLower);
+    }
 
-            // Hoofdbericht
-            const wishMessage = document.createElement('div');
-            wishMessage.classList.add('wishMessage');
-            wishMessage.innerHTML = `<h2>${message}</h2>`;
+    const wishMessage = document.createElement('div');
+    wishMessage.classList.add('wishMessage');
+    wishMessage.innerHTML = `<h2>${message}</h2>`;
 
-            // Personal message
-            if (personalWish) {
-                const personalMessage = document.createElement('p');
-                personalMessage.classList.add('personalMessage');
-                personalMessage.innerText = `"${decodeURIComponent(personalWish)}"`;
-                wishMessage.appendChild(personalMessage);
-            }
+    if (personalWish) {
+        const personalMessage = document.createElement('p');
+        personalMessage.classList.add('personalMessage');
+        personalMessage.innerText = `"${decodeURIComponent(personalWish)}"`;
+        wishMessage.appendChild(personalMessage);
+    }
 
-            wishMessageDiv.appendChild(wishMessage);
+    wishMessageDiv.appendChild(wishMessage);
 
-            // Achtergrond instellen
-            document.body.style.backgroundImage = `url('${backgroundImage}')`;
-            document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundImage = `url('${backgroundImage}')`;
+    document.body.style.backgroundSize = 'cover';
+} else {
+    alert('Missing celebrant or wisher name!');
+}
 
-        } else {
-            alert('Missing celebrant or wisher name!');
-        }
+function getBackgroundImage(name) {
+    switch(name) {
+        case 'john': return 'assets/images/john.jpg';
+        case 'sarah': return 'assets/images/sarah.jpg';
+        case 'sylvia': return 'assets/images/sylvia.jpg';
+        default: return 'assets/images/default.jpg';
+    }
+}
 
-        function getBackgroundImage(celebrantLower) {
-            switch (celebrantLower) {
-                case 'john': return 'assets/images/john.jpg';
-                case 'sarah': return 'assets/images/sarah.jpg';
-                case 'sylvia': return 'assets/images/sylvia.jpg';
-                default: return 'assets/images/default.jpg';
-            }
-        }
+function generateConfetti() {
+    const container = document.querySelector('.confetti-container');
+    const numConfetti = 100;
+    for (let i = 0; i < numConfetti; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = `${Math.random() * 100}%`;
+        confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
+        container.appendChild(confetti);
+    }
+}
 
-        function generateConfetti() {
-            const container = document.querySelector('.confetti-container');
-            const numConfetti = 100;
-            for (let i = 0; i < numConfetti; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                confetti.style.left = `${Math.random() * 100}%`;
-                confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
-                container.appendChild(confetti);
-            }
-        }
-
-        window.onload = generateConfetti;
-    </script>
+window.onload = generateConfetti;
+</script>
 </body>
 </html>
