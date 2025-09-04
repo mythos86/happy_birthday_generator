@@ -14,20 +14,45 @@ body {
 .container {
     width: 100%;
     max-width: 600px;
-    margin: 50px auto;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255,255,255,0.8);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     border-radius: 8px;
+    margin: 50px auto;
 }
 
-/* Liam special case */
-body.liam-background .container {
+/* Special case for Liam */
+.container.liam-background {
+    /* extra styling if needed */
+}
+
+/* Position classes for container */
+.container.top {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.container.bottom {
     position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    margin: 0;
+}
+
+.container.left {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+}
+
+.container.right {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
 }
 
 /* Messages styling */
@@ -48,12 +73,6 @@ h1 {
     color: #555;
     margin: 10px 0;
 }
-
-/* Position classes for personal message */
-.personalMessage.top { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); }
-.personalMessage.bottom { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); }
-.personalMessage.left { position: absolute; top: 50%; left: 20px; transform: translateY(-50%); }
-.personalMessage.right { position: absolute; top: 50%; right: 20px; transform: translateY(-50%); }
 
 button {
     padding: 10px 20px;
