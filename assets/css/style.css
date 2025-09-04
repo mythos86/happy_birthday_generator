@@ -4,15 +4,12 @@ body {
     text-align: center;
     padding: 0;
     margin: 0;
-    min-height: 100vh; /* altijd minstens 100% van schermhoogte */
+    min-height: 100vh;           /* altijd minstens 100% van schermhoogte */
     background-color: #f0f0f0;
-    background-size: cover;      /* stretch achtergrond over volledige viewport */
-    background-position: center; /* centraal plaatsen */
+    background-size: cover;       /* stretch achtergrond over volledige viewport */
+    background-position: center;  /* centraal plaatsen */
     background-repeat: no-repeat;
     background-attachment: fixed; /* blijft fixed tijdens scrollen */
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /* Container styling */
@@ -24,6 +21,7 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     border-radius: 8px;
     position: relative;      /* standaard position */
+    margin: 50px auto;       /* standaard margin voor statisch gebruik */
 }
 
 /* Position classes voor container */
@@ -32,7 +30,7 @@ body {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    margin: 0;
+    margin: 0;               /* verwijder standaard margin bij fixed */
 }
 
 .container.bottom {
@@ -87,7 +85,9 @@ button {
     cursor: pointer;
 }
 
-button:hover { background-color: #45a049; }
+button:hover {
+    background-color: #45a049;
+}
 
 /* Media queries voor extra responsiviteit */
 @media (max-width: 768px) {
