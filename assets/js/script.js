@@ -6,7 +6,7 @@ document.getElementById('generate').addEventListener('click', function() {
     
     if (celebrant && wisher) {
         // Prepare the URL for the birthday page with query parameters
-        const url = `birthday.html?celebrant=${encodeURIComponent(celebrant)}&wisher=${encodeURIComponent(wisher)}&personalWish=${encodeURIComponent(personalWish)}`;
+        const url = `birthday.html?celebrant=${encodeURIComponent(celebrant)}&wisher=${encodeURIComponent(wisher)}&personalWish=${encodeURIComponent(personalWish)}&position=${encodeURIComponent(position)}`;
         
         // Redirect to the new page
         window.location.href = url;
