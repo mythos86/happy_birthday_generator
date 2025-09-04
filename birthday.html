@@ -16,9 +16,9 @@
 
     <script>
         const params = new URLSearchParams(window.location.search);
-        const celebrant = params.get('celebrant');
-        const wisher = params.get('wisher');
-        const personalWish = params.get('personalWish');
+        const celebrant = params.get('celebrant')?.trim();
+        const wisher = params.get('wisher')?.trim();
+        const personalWish = params.get('personalWish')?.trim();
 
         const wishMessageDiv = document.getElementById('wishMessage');
 
@@ -32,7 +32,7 @@
             let message = '';
             let backgroundImage = 'assets/images/default.jpg';
 
-            // Alleen Nederlands + Spider-Man als Peetje en Liam
+            // Alleen Nederlands + Spider-Man als wisher === Peetje en celebrant === Liam
             if (celebrantLower === 'liam' && wisherLower === 'peetje') {
                 message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
                 backgroundImage = 'assets/images/spiderman.jpg';
