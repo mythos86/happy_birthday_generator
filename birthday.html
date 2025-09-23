@@ -15,6 +15,7 @@
         <img id="bgImage" src="assets/images/default.jpg" alt="background">
     </div>
 
+    <!-- Confetti container -->
     <div class="confetti-container"></div>
 
     <!-- Container met dynamische positie -->
@@ -74,7 +75,6 @@
 
                 // Achtergrond instellen via <img>
                 document.getElementById('bgImage').src = backgroundImage;
-
             } else {
                 alert('Voer de namen van jarige en wisher in!');
             }
@@ -92,10 +92,12 @@
             function generateConfetti() {
                 const container = document.querySelector('.confetti-container');
                 const numConfetti = 100;
+                const screenWidth = window.innerWidth;
+
                 for (let i = 0; i < numConfetti; i++) {
                     const confetti = document.createElement('div');
                     confetti.classList.add('confetti');
-                    confetti.style.left = `${Math.random() * 100}%`;
+                    confetti.style.left = `${Math.random() * screenWidth}px`;
                     confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
                     container.appendChild(confetti);
                 }
