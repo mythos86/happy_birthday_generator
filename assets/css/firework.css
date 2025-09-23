@@ -1,0 +1,42 @@
+/* Vuurwerk container */
+.firework-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 9999;
+}
+
+/* Rocket en explosie */
+.firework {
+    position: absolute;
+    bottom: 0;
+    width: 6px;
+    height: 20px;
+    border-radius: 50%;
+    animation: shoot 1s ease-out forwards, explode 1s ease-out 1s forwards;
+}
+
+/* Rocket omhoog */
+@keyframes shoot {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-300px); opacity: 1; }
+}
+
+/* Ontploffing van vuurwerk */
+@keyframes explode {
+    0% { width:6px; height:20px; opacity:1; transform: translateY(-300px);}
+    100% {
+        width:0; height:0; opacity:0;
+        box-shadow: 
+            0 -50px red,
+            30px -40px orange,
+            -30px -40px yellow,
+            40px -20px green,
+            -40px -20px blue,
+            0 50px purple;
+    }
+}

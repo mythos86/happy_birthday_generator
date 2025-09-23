@@ -7,6 +7,8 @@
     <title>Birthday Wishes</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/confetti.css">
+    <!-- <link rel="stylesheet" href="assets/css/firework.css"> -->
+
 </head>
 
 <body>
@@ -60,6 +62,7 @@
                     message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂 Hiep, hiep, HOERA er is er 🦆 JARIG 🥳🎉`;
                     backgroundImage = 'assets/images/Soccer.jpg';
                     bgFit = 'fill'; // Soccer stretched
+                    startFireworks(); // in firework.js
                 } else {
                     message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
                     backgroundImage = getBackgroundImage(celebrantLower);
@@ -123,5 +126,7 @@
             generateConfetti();
         }
     </script>
+    <script src="assets/js/firework.js"></script>
+
 </body>
 </html>
