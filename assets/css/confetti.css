@@ -4,15 +4,15 @@
         opacity: 1;
     }
     100% {
-        transform: translateY(200%) rotate(360deg);
+        transform: translateY(100vh) rotate(360deg);
         opacity: 0;
     }
 }
 
 .confetti {
-    position: absolute; /* verander van relative naar absolute */
-    top: -10px;         /* start net boven scherm */
-    left: 0;            /* wordt dynamisch ingesteld via JS */
+    position: absolute;
+    top: -10px;
+    left: 0;
     width: 10px;
     height: 10px;
     background-color: #FF69B4;
@@ -21,13 +21,8 @@
     opacity: 0.9;
 }
 
-.confetti:nth-child(odd) {
-    background-color: #32CD32;
-}
-
-.confetti:nth-child(even) {
-    background-color: #FFD700;
-}
+.confetti:nth-child(odd) { background-color: #32CD32; }
+.confetti:nth-child(even) { background-color: #FFD700; }
 
 .confetti-container {
     position: fixed;

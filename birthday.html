@@ -34,9 +34,10 @@
 
             const containerDiv = document.getElementById('messageContainer');
             const wishMessageDiv = document.getElementById('wishMessage');
+            const bgImage = document.getElementById('bgImage');
 
             // Voeg positieklasse toe
-            containerDiv.classList.add(position);
+            containerDiv.className = `container ${position}`;
 
             if (celebrant && wisher) {
                 const celebrantLower = celebrant.toLowerCase();
@@ -44,22 +45,28 @@
 
                 let message = '';
                 let backgroundImage = 'assets/images/default.jpg';
+                let bgFit = 'cover'; // default
 
                 // Specifieke combinaties
                 if (celebrantLower === 'liam' && wisherLower === 'peetje') {
                     message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
                     backgroundImage = 'assets/images/spiderman.jpg';
+                    bgFit = 'cover';
                 } else if (celebrantLower === 'mila' && wisherLower === 'meetje') {
                     message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
                     backgroundImage = 'assets/images/stitch.jpg';
+                    bgFit = 'cover'; // Stitch gecentreerd, fill
                 } else if (celebrantLower === 'maikel' && wisherLower === 'keibeck-beinsberger') {
                     message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂 Hiep, hiep, HOERA er is er 🦆 JARIG 🥳🎉`;
                     backgroundImage = 'assets/images/Soccer.jpg';
+                    bgFit = 'fill'; // Soccer stretched
                 } else {
                     message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
                     backgroundImage = getBackgroundImage(celebrantLower);
+                    bgFit = 'cover';
                 }
 
+                // Bericht
                 const wishMessage = document.createElement('div');
                 wishMessage.classList.add('wishMessage');
                 wishMessage.innerHTML = `<h2>${message}</h2>`;
@@ -73,8 +80,16 @@
 
                 wishMessageDiv.appendChild(wishMessage);
 
-                // Achtergrond instellen via <img>
-                document.getElementById('bgImage').src = backgroundImage;
+                // Achtergrond instellen
+                bgImage.src = backgroundImage;
+                bgImage.style.objectFit = bgFit;
+
+                if(bgFit === 'cover') {
+                    bgImage.style.objectPosition = 'center center';
+                } else {
+                    bgImage.style.objectPosition = '0 0';
+                }
+
             } else {
                 alert('Voer de namen van jarige en wisher in!');
             }
@@ -93,12 +108,14 @@
                 const container = document.querySelector('.confetti-container');
                 const numConfetti = 100;
                 const screenWidth = window.innerWidth;
+                const screenHeight = window.innerHeight;
 
                 for (let i = 0; i < numConfetti; i++) {
                     const confetti = document.createElement('div');
                     confetti.classList.add('confetti');
                     confetti.style.left = `${Math.random() * screenWidth}px`;
                     confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                    confetti.style.animationDelay = `${Math.random() * 2}s`;
                     container.appendChild(confetti);
                 }
             }

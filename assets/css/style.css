@@ -16,12 +16,14 @@ body {
     height: 100%;
     z-index: -1;
     overflow: hidden;
+    background-color: black; /* fallback voor stitch of transparantie */
 }
 
 .bg-image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* behouden van verhoudingen, full screen */
+    /* object-fit wordt nu dynamisch via JS ingesteld */
+    transition: all 0.5s ease;
 }
 
 /* Container styling */
