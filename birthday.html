@@ -29,8 +29,7 @@
             const containerDiv = document.getElementById('messageContainer');
             const wishMessageDiv = document.getElementById('wishMessage');
 
-            // Positie resetten en juiste toevoegen
-            containerDiv.classList.remove('top', 'bottom', 'left', 'right');
+            // Voeg de positieklasse toe
             containerDiv.classList.add(position);
 
             if (celebrant && wisher) {
@@ -43,12 +42,6 @@
                 if (celebrantLower === 'liam' && wisherLower === 'peetje') {
                     message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
                     backgroundImage = 'assets/images/spiderman.jpg';
-                } else if (celebrantLower === 'mila' && wisherLower === 'meetje') {
-                    message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
-                    backgroundImage = 'assets/images/stitch.jpg';
-                } else if (celebrantLower === 'maikel' && wisherLower === 'keibeck-beinsberger') {
-                    message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂 Hiep, hiep, HOERA er is er 🦆 JARIG 🥳🎉`;
-                    backgroundImage = 'assets/images/soccer.jpg';
                 } else {
                     message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
                     backgroundImage = getBackgroundImage(celebrantLower);
