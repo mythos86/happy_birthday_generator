@@ -1,4 +1,4 @@
-/* Body & achtergrond */
+/* Algemene body & achtergrond */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -6,6 +6,10 @@ body {
     margin: 0;
     min-height: 100vh;
     background-color: #f0f0f0;
+}
+
+/* Achtergrond altijd passend */
+body.bg {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -24,7 +28,7 @@ body {
     margin: 50px auto;
 }
 
-/* Position classes container */
+/* Posities */
 .container.top {
     position: fixed;
     top: 20px;
@@ -57,7 +61,7 @@ body {
     margin: 0;
 }
 
-/* Messages styling */
+/* Tekststijlen */
 h1 {
     font-size: 36px;
     color: #000080;
@@ -66,17 +70,18 @@ h1 {
 
 .wishMessage h2 {
     font-size: 28px;
-    color: #ff5722;
+    color: #000000;
 }
 
 .personalMessage {
     font-size: 20px;
     font-style: italic;
-    color: #555;
+    font-weight: bold;
+    color: #000000;
     margin: 10px 0;
 }
 
-/* Button */
+/* Knop */
 button {
     padding: 10px 20px;
     background-color: #4CAF50;
