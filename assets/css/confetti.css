@@ -1,33 +1,24 @@
 @keyframes confetti-fall {
-    0% {
-        transform: translateY(-100%);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(200%);
-        opacity: 0;
-    }
+    0% { transform: translateY(-100%); opacity: 1; }
+    100% { transform: translateY(200%); opacity: 0; }
 }
 
 .confetti {
-    /* position: absolute; */
-    position: relative;
-    top: 0;
-    left: 50%;
+    position: absolute;
     width: 10px;
     height: 10px;
-    background-color: #FF69B4; /* Random color for confetti */
+    background-color: #FF69B4;
     animation: confetti-fall 2s infinite linear;
     opacity: 0;
     transform-origin: center center;
 }
 
 .confetti:nth-child(odd) {
-    background-color: #32CD32; /* Green confetti */
+    background-color: #32CD32;
 }
 
 .confetti:nth-child(even) {
-    background-color: #FFD700; /* Yellow confetti */
+    background-color: #FFD700;
 }
 
 .confetti-container {

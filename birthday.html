@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/confetti.css">
 </head>
-
 <body>
     <div class="confetti-container"></div>
 
@@ -19,79 +17,86 @@
     </div>
 
     <script>
-        window.onload = function () {
-            const params = new URLSearchParams(window.location.search);
-            const celebrant = params.get('celebrant')?.trim();
-            const wisher = params.get('wisher')?.trim();
-            const personalWish = params.get('personalWish')?.trim();
-            const position = params.get('position') || 'bottom';
+    window.onload = function () {
+        const params = new URLSearchParams(window.location.search);
+        const celebrant = params.get('celebrant')?.trim();
+        const wisher = params.get('wisher')?.trim();
+        const personalWish = params.get('personalWish')?.trim();
+        const position = params.get('position') || 'bottom';
 
-            const containerDiv = document.getElementById('messageContainer');
-            const wishMessageDiv = document.getElementById('wishMessage');
+        const containerDiv = document.getElementById('messageContainer');
+        const wishMessageDiv = document.getElementById('wishMessage');
 
-            // Voeg de positieklasse toe
-            containerDiv.classList.add(position);
+        // Voeg positieklasse toe
+        containerDiv.classList.add(position);
 
-            if (celebrant && wisher) {
-                const celebrantLower = celebrant.toLowerCase();
-                const wisherLower = wisher.toLowerCase();
+        if (celebrant && wisher) {
+            const celebrantLower = celebrant.toLowerCase();
+            const wisherLower = wisher.toLowerCase();
 
-                let message = '';
-                let backgroundImage = 'assets/images/default.jpg';
+            let message = '';
+            let backgroundImage = 'assets/images/default.jpg';
 
-                if (celebrantLower === 'liam' && wisherLower === 'peetje') {
-                    message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
-                    backgroundImage = 'assets/images/spiderman.jpg';
-                } else {
-                    message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
-                    backgroundImage = getBackgroundImage(celebrantLower);
-                }
-
-                const wishMessage = document.createElement('div');
-                wishMessage.classList.add('wishMessage');
-                wishMessage.innerHTML = `<h2>${message}</h2>`;
-
-                if (personalWish) {
-                    const personalMessage = document.createElement('p');
-                    personalMessage.classList.add('personalMessage');
-                    personalMessage.innerText = `"${decodeURIComponent(personalWish)}"`;
-                    wishMessage.appendChild(personalMessage);
-                }
-
-                wishMessageDiv.appendChild(wishMessage);
-
-                // Achtergrond instellen (volledig scherm, altijd passend)
-                document.body.classList.add('bg');
-                document.body.style.backgroundImage = `url('${backgroundImage}')`;
+            // Specifieke combinaties
+            if (celebrantLower === 'liam' && wisherLower === 'peetje') {
+                message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
+                backgroundImage = 'assets/images/spiderman.jpg';
+            } else if (celebrantLower === 'mila' && wisherLower === 'meetje') {
+                message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
+                backgroundImage = 'assets/images/stitch.jpg';
+            } else if (celebrantLower === 'maikel' && wisherLower === 'keibeck-beinsberger') {
+                message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂 Hiep, hiep, HOERA er is er 🦆 JARIG 🥳🎉`;
+                backgroundImage = 'assets/images/Soccer.jpg';
             } else {
-                alert('Voer de namen van jarige en wisher in!');
+                message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
+                backgroundImage = getBackgroundImage(celebrantLower);
             }
 
-            function getBackgroundImage(name) {
-                switch (name) {
-                    case 'john': return 'assets/images/john.jpg';
-                    case 'sarah': return 'assets/images/sarah.jpg';
-                    case 'sylvia': return 'assets/images/sylvia.jpg';
-                    default: return 'assets/images/default.jpg';
-                }
+            const wishMessage = document.createElement('div');
+            wishMessage.classList.add('wishMessage');
+            wishMessage.innerHTML = `<h2>${message}</h2>`;
+
+            if (personalWish) {
+                const personalMessage = document.createElement('p');
+                personalMessage.classList.add('personalMessage');
+                personalMessage.innerText = `"${decodeURIComponent(personalWish)}"`;
+                wishMessage.appendChild(personalMessage);
             }
 
-            // Confetti genereren
-            function generateConfetti() {
-                const container = document.querySelector('.confetti-container');
-                const numConfetti = 100;
-                for (let i = 0; i < numConfetti; i++) {
-                    const confetti = document.createElement('div');
-                    confetti.classList.add('confetti');
-                    confetti.style.left = `${Math.random() * 100}%`;
-                    confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
-                    container.appendChild(confetti);
-                }
-            }
+            wishMessageDiv.appendChild(wishMessage);
 
-            generateConfetti();
+            // Achtergrond instellen
+            document.body.classList.add('bg');
+            document.body.style.backgroundImage = `url('${backgroundImage}')`;
+
+        } else {
+            alert('Voer de namen van jarige en wisher in!');
         }
+
+        function getBackgroundImage(name) {
+            switch (name) {
+                case 'john': return 'assets/images/john.jpg';
+                case 'sarah': return 'assets/images/sarah.jpg';
+                case 'sylvia': return 'assets/images/sylvia.jpg';
+                default: return 'assets/images/default.jpg';
+            }
+        }
+
+        // Confetti genereren
+        function generateConfetti() {
+            const container = document.querySelector('.confetti-container');
+            const numConfetti = 100;
+            for (let i = 0; i < numConfetti; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                container.appendChild(confetti);
+            }
+        }
+
+        generateConfetti();
+    }
     </script>
 </body>
-
 </html>
