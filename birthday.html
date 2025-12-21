@@ -58,7 +58,7 @@
                     message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
                     backgroundImage = 'assets/images/stitch.jpg';
                     bgFit = 'cover'; // Stitch gecentreerd, fill
-                } else if (celebrantLower === 'maikel' && wisherLower === 'keibeck-beinsberger') {
+                }  else if (celebrantLower === 'maikel' && wisherLower === 'keibeck-beinsberger') {
                     message = `Familie ${wisher} wensen je een fantastische verjaardag, ${celebrant}! 🎉🎂 HIEP, HIEP, HOERA er is er 🦆 JARIG 🥳🎉`;
                     backgroundImage = 'assets/images/Soccer.jpg';
                     bgFit = 'fill'; // Soccer stretched
@@ -68,6 +68,10 @@
                     backgroundImage = 'assets/images/stokstaartje.jpg';
                     bgFit = 'fill'; // Soccer stretched
                     // startFireworks(); // in firework.js
+                } else if (celebrantLower === 'chiara' && wisherLower === 'papa') {
+                    message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
+                    backgroundImage = 'assets/images/chiara.jpg';
+                    bgFit = 'cover'; // Stitch gecentreerd, fill
                 } else {
                     message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
                     backgroundImage = getBackgroundImage(celebrantLower);
