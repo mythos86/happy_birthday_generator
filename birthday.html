@@ -92,17 +92,18 @@
                 const h2 = document.createElement('h2');
                 h2.innerText = message;
 
-                // 👉 ENIGE FIX: alleen voor Nathalie + papa geel
-                if (celebrantLower === 'nathalie' && wisherLower === 'papa') {
-                    h2.style.color = 'yellow';
-                }
-
                 wishMessage.appendChild(h2);
 
                 if (personalWish) {
                     const personalMessage = document.createElement('p');
                     personalMessage.classList.add('personalMessage');
                     personalMessage.innerText = `"${decodeURIComponent(personalWish)}"`;
+
+                    // 👉 FIX: alleen Nathalie + papa = geel
+                    if (celebrantLower === 'nathalie' && wisherLower === 'papa') {
+                        personalMessage.style.color = 'yellow';
+                    }
+
                     wishMessage.appendChild(personalMessage);
                 }
 
@@ -131,7 +132,6 @@
                 }
             }
 
-            // Confetti
             function generateConfetti() {
                 const container = document.querySelector('.confetti-container');
                 const numConfetti = 100;
