@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/confetti.css">
     <!-- <link rel="stylesheet" href="assets/css/firework.css"> -->
-
 </head>
 
 <body>
@@ -38,55 +37,67 @@
             const wishMessageDiv = document.getElementById('wishMessage');
             const bgImage = document.getElementById('bgImage');
 
-            // Voeg positieklasse toe
             containerDiv.className = `container ${position}`;
 
             if (celebrant && wisher) {
+
                 const celebrantLower = celebrant.toLowerCase();
                 const wisherLower = wisher.toLowerCase();
 
                 let message = '';
                 let backgroundImage = 'assets/images/default.jpg';
-                let bgFit = 'fit'; // default
+                let bgFit = 'fit';
 
                 // Specifieke combinaties
                 if (celebrantLower === 'liam' && wisherLower === 'peetje') {
                     message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
                     backgroundImage = 'assets/images/spiderman.jpg';
                     bgFit = 'cover';
+
                 } else if (celebrantLower === 'mila' && wisherLower === 'meetje') {
                     message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
                     backgroundImage = 'assets/images/stitch.jpg';
-                    bgFit = 'cover'; // Stitch gecentreerd, fill
-                }  else if (celebrantLower === 'maikel' && wisherLower === 'keibeck-beinsberger') {
+                    bgFit = 'cover';
+
+                } else if (celebrantLower === 'maikel' && wisherLower === 'keibeck-beinsberger') {
                     message = `Familie ${wisher} wensen je een fantastische verjaardag, ${celebrant}! 🎉🎂 HIEP, HIEP, HOERA er is er 🦆 JARIG 🥳🎉`;
                     backgroundImage = 'assets/images/Soccer.jpg';
-                    bgFit = 'fill'; // Soccer stretched
-                    // startFireworks(); // in firework.js
+                    bgFit = 'fill';
+
                 } else if (celebrantLower === 'jenny' && wisherLower === 'keibeck-beinsberger') {
                     message = `Familie ${wisher} wensen je een fantastische verjaardag, ${celebrant}! 🎉🎂 HIEP, HIEP, HOERA er is er 🦆 JARIG 🥳🎉`;
                     backgroundImage = 'assets/images/stokstaartje.jpg';
-                    bgFit = 'fill'; // Soccer stretched
-                    // startFireworks(); // in firework.js
+                    bgFit = 'fill';
+
                 } else if (celebrantLower === 'chiara' && wisherLower === 'papa') {
                     message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
                     backgroundImage = 'assets/images/AISelect_20251221_220223_Chrome.jpg';
                     bgFit = 'cover';
+
                 } else if (celebrantLower === 'nathalie' && wisherLower === 'papa') {
                     message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
                     backgroundImage = 'assets/images/nathalie_16.png';
                     bgFit = 'cover';
-                    messageColor = 'yellow';
+
                 } else {
                     message = `${wisher} wishes you a wonderful birthday, ${celebrant}! 🎉🎂`;
                     backgroundImage = getBackgroundImage(celebrantLower);
                     bgFit = 'cover';
                 }
 
-                // Bericht
+                // Bericht maken
                 const wishMessage = document.createElement('div');
                 wishMessage.classList.add('wishMessage');
-                wishMessage.innerHTML = `<h2>${message}</h2>`;
+
+                const h2 = document.createElement('h2');
+                h2.innerText = message;
+
+                // 👉 ENIGE FIX: alleen voor Nathalie + papa geel
+                if (celebrantLower === 'nathalie' && wisherLower === 'papa') {
+                    h2.style.color = 'yellow';
+                }
+
+                wishMessage.appendChild(h2);
 
                 if (personalWish) {
                     const personalMessage = document.createElement('p');
@@ -101,7 +112,7 @@
                 bgImage.src = backgroundImage;
                 bgImage.style.objectFit = bgFit;
 
-                if(bgFit === 'cover') {
+                if (bgFit === 'cover') {
                     bgImage.style.objectPosition = 'center center';
                 } else {
                     bgImage.style.objectPosition = '0 0';
@@ -120,26 +131,25 @@
                 }
             }
 
-            // Confetti genereren
+            // Confetti
             function generateConfetti() {
                 const container = document.querySelector('.confetti-container');
                 const numConfetti = 100;
-                const screenWidth = window.innerWidth;
-                const screenHeight = window.innerHeight;
 
                 for (let i = 0; i < numConfetti; i++) {
                     const confetti = document.createElement('div');
                     confetti.classList.add('confetti');
-                    confetti.style.left = `${Math.random() * screenWidth}px`;
+                    confetti.style.left = `${Math.random() * window.innerWidth}px`;
                     confetti.style.animationDuration = `${Math.random() * 2 + 2}s`;
                     confetti.style.animationDelay = `${Math.random() * 2}s`;
                     container.appendChild(confetti);
                 }
             }
+
             generateConfetti();
         }
     </script>
-    <script src="assets/js/firework.js"></script>
 
+    <script src="assets/js/firework.js"></script>
 </body>
 </html>
