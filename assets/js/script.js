@@ -15,4 +15,5 @@ document.getElementById('generate').addEventListener('click', function() {
     } else {
         alert('Vul zowel de naam van jarige als jouw naam in!');
     }
+
 });
