@@ -19,7 +19,7 @@
     <!-- Confetti container -->
     <div class="confetti-container"></div>
 
-    <!-- Container met dynamische positie -->
+    <!-- Container -->
     <div class="container" id="messageContainer">
         <h1>Happy Birthday!</h1>
         <div id="wishMessage"></div>
@@ -48,7 +48,7 @@
                 let backgroundImage = 'assets/images/default.jpg';
                 let bgFit = 'fit';
 
-                // Specifieke combinaties
+                // Combinaties
                 if (celebrantLower === 'liam' && wisherLower === 'peetje') {
                     message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
                     backgroundImage = 'assets/images/spiderman.jpg';
@@ -60,12 +60,12 @@
                     bgFit = 'cover';
 
                 } else if (celebrantLower === 'maikel' && wisherLower === 'keibeck-beinsberger') {
-                    message = `Familie ${wisher} wensen je een fantastische verjaardag, ${celebrant}! 🎉🎂 HIEP, HIEP, HOERA er is er 🦆 JARIG 🥳🎉`;
+                    message = `Familie ${wisher} wensen je een fantastische verjaardag, ${celebrant}! 🎉🎂 HIEP, HIEP, HOERA 🦆🥳`;
                     backgroundImage = 'assets/images/Soccer.jpg';
                     bgFit = 'fill';
 
                 } else if (celebrantLower === 'jenny' && wisherLower === 'keibeck-beinsberger') {
-                    message = `Familie ${wisher} wensen je een fantastische verjaardag, ${celebrant}! 🎉🎂 HIEP, HIEP, HOERA er is er 🦆 JARIG 🥳🎉`;
+                    message = `Familie ${wisher} wensen je een fantastische verjaardag, ${celebrant}! 🎉🎂 HIEP, HIEP, HOERA 🦆🥳`;
                     backgroundImage = 'assets/images/stokstaartje.jpg';
                     bgFit = 'fill';
 
@@ -92,6 +92,11 @@
                 const h2 = document.createElement('h2');
                 h2.innerText = message;
 
+                // 👉 FIX: Nathalie + papa → h2 rood
+                if (celebrantLower === 'nathalie' && wisherLower === 'papa') {
+                    h2.style.color = 'red';
+                }
+
                 wishMessage.appendChild(h2);
 
                 if (personalWish) {
@@ -99,7 +104,7 @@
                     personalMessage.classList.add('personalMessage');
                     personalMessage.innerText = `"${decodeURIComponent(personalWish)}"`;
 
-                    // 👉 FIX: alleen Nathalie + papa = geel
+                    // 👉 FIX: Nathalie + papa → personal message geel
                     if (celebrantLower === 'nathalie' && wisherLower === 'papa') {
                         personalMessage.style.color = 'yellow';
                     }
@@ -109,7 +114,7 @@
 
                 wishMessageDiv.appendChild(wishMessage);
 
-                // Achtergrond instellen
+                // Achtergrond
                 bgImage.src = backgroundImage;
                 bgImage.style.objectFit = bgFit;
 
