@@ -7,16 +7,15 @@
     <title>Birthday Wishes</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/confetti.css">
-    <!-- <link rel="stylesheet" href="assets/css/firework.css"> -->
 </head>
 
 <body>
-    <!-- Achtergrond afbeelding -->
+    <!-- Achtergrond -->
     <div class="bg-image-container">
         <img id="bgImage" src="assets/images/default.jpg" alt="background">
     </div>
 
-    <!-- Confetti container -->
+    <!-- Confetti -->
     <div class="confetti-container"></div>
 
     <!-- Container -->
@@ -44,6 +43,9 @@
                 const celebrantLower = celebrant.toLowerCase();
                 const wisherLower = wisher.toLowerCase();
 
+                const isNathaliePapa =
+                    celebrantLower === 'nathalie' && wisherLower === 'papa';
+
                 let message = '';
                 let backgroundImage = 'assets/images/default.jpg';
                 let bgFit = 'fit';
@@ -60,12 +62,12 @@
                     bgFit = 'cover';
 
                 } else if (celebrantLower === 'maikel' && wisherLower === 'keibeck-beinsberger') {
-                    message = `Familie ${wisher} wensen je een fantastische verjaardag, ${celebrant}! 🎉🎂 HIEP, HIEP, HOERA 🦆🥳`;
+                    message = `Familie ${wisher} wensen je een fantastische verjaardag, ${celebrant}! 🎉🎂 HIEP 🦆🥳`;
                     backgroundImage = 'assets/images/Soccer.jpg';
                     bgFit = 'fill';
 
                 } else if (celebrantLower === 'jenny' && wisherLower === 'keibeck-beinsberger') {
-                    message = `Familie ${wisher} wensen je een fantastische verjaardag, ${celebrant}! 🎉🎂 HIEP, HIEP, HOERA 🦆🥳`;
+                    message = `Familie ${wisher} wensen je een fantastische verjaardag, ${celebrant}! 🎉🎂 HIEP 🦆🥳`;
                     backgroundImage = 'assets/images/stokstaartje.jpg';
                     bgFit = 'fill';
 
@@ -74,7 +76,7 @@
                     backgroundImage = 'assets/images/AISelect_20251221_220223_Chrome.jpg';
                     bgFit = 'cover';
 
-                } else if (celebrantLower === 'nathalie' && wisherLower === 'papa') {
+                } else if (isNathaliePapa) {
                     message = `${wisher} wenst je een fantastische verjaardag, ${celebrant}! 🎉🎂`;
                     backgroundImage = 'assets/images/nathalie_16.png';
                     bgFit = 'cover';
@@ -92,23 +94,22 @@
                 const h2 = document.createElement('h2');
                 h2.innerText = message;
 
-                // 👉 FIX: Nathalie + papa → h2 rood
-                if (celebrantLower === 'nathalie' && wisherLower === 'papa') {
-                    h2.style.color = 'blue';
+                const personalMessage = document.createElement('p');
+
+                if (personalWish) {
+                    personalMessage.classList.add('personalMessage');
+                    personalMessage.innerText = `"${decodeURIComponent(personalWish)}"`;
+                }
+
+                // 👉 NEON GREEN STYLE (Nathalie + papa)
+                if (isNathaliePapa) {
+                    h2.style.color = '#39ff14';
+                    personalMessage.style.color = '#39ff14';
                 }
 
                 wishMessage.appendChild(h2);
 
                 if (personalWish) {
-                    const personalMessage = document.createElement('p');
-                    personalMessage.classList.add('personalMessage');
-                    personalMessage.innerText = `"${decodeURIComponent(personalWish)}"`;
-
-                    // 👉 FIX: Nathalie + papa → personal message geel
-                    if (celebrantLower === 'nathalie' && wisherLower === 'papa') {
-                        personalMessage.style.color = 'blue';
-                    }
-
                     wishMessage.appendChild(personalMessage);
                 }
 
@@ -118,11 +119,8 @@
                 bgImage.src = backgroundImage;
                 bgImage.style.objectFit = bgFit;
 
-                if (bgFit === 'cover') {
-                    bgImage.style.objectPosition = 'center center';
-                } else {
-                    bgImage.style.objectPosition = '0 0';
-                }
+                bgImage.style.objectPosition =
+                    bgFit === 'cover' ? 'center center' : '0 0';
 
             } else {
                 alert('Voer de namen van jarige en wisher in!');
@@ -132,7 +130,7 @@
                 switch (name) {
                     case 'john': return 'assets/images/john.jpg';
                     case 'sarah': return 'assets/images/sarah.jpg';
-                    case 'sylvia': return 'assets/images/sylvia.jpg';
+                    case 'sylvia': return 'assets/images/default.jpg';
                     default: return 'assets/images/default.jpg';
                 }
             }
